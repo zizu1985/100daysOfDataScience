@@ -1,0 +1,2 @@
+Salary and expierence - very basic "bucket" regression
+Topics of intereset - natural language processing
