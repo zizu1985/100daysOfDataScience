@@ -1,0 +1,269 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R Notebook},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{R Notebook}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Exercise 3-1 \#\#\#\#\#\#\#\#\#\#\#\#\#
+
+We have 2 continous variable from hicker smarthphone. dist
+-\textgreater{} Distance (in km) alti -\textgreater{} Altitude (in m)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Calculate the arithmetic mean and median for both distance and
+  altitude
+\end{enumerate}
+
+Mean, Median for Distance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dist<-}\KeywordTok{c}\NormalTok{(}\FloatTok{12.5}\NormalTok{,}\FloatTok{29.9}\NormalTok{,}\FloatTok{14.8}\NormalTok{,}\FloatTok{18.7}\NormalTok{,}\FloatTok{7.6}\NormalTok{,}\FloatTok{16.2}\NormalTok{,}\FloatTok{16.5}\NormalTok{,}\FloatTok{27.4}\NormalTok{,}\FloatTok{12.1}\NormalTok{,}\FloatTok{17.5}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(dist)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.32
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(dist)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16.35
+\end{verbatim}
+
+Mean, Median for Altitude
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alti<-}\KeywordTok{c}\NormalTok{(}\DecValTok{342}\NormalTok{,}\DecValTok{1245}\NormalTok{,}\DecValTok{502}\NormalTok{,}\DecValTok{555}\NormalTok{,}\DecValTok{398}\NormalTok{,}\DecValTok{670}\NormalTok{,}\DecValTok{796}\NormalTok{,}\DecValTok{912}\NormalTok{,}\DecValTok{238}\NormalTok{,}\DecValTok{466}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(alti)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 612.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(alti)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 528.5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Determine the first and third quartiles for both distance and the
+  altitude variables Discuss the shape of the distribution give the
+  result of (a) and (b)
+\end{enumerate}
+
+Quartiles for distance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(dist,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.75}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  25%  75% 
+## 12.5 18.7
+\end{verbatim}
+
+To achieve correct quantile type 2 algorithm was used (default is 7).
+
+Quartiles for distance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(alti,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.75}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 75% 
+## 398 796
+\end{verbatim}
+
+What does it means? Distance. Mean is higher than median and mean in
+higher range of 25\% and 75\% quantile. It means there were some trip(s)
+with longer length than others.
+
+Altitude. Mean is in the middle of 25\% and 75\% range. Mean is much
+higher than average, so we have some trips with mich higher altitude
+move then others.
+
+Interquartile range for distance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{quantile}\NormalTok{(dist,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.75}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{) }\OperatorTok{-}\StringTok{ }\KeywordTok{quantile}\NormalTok{(dist,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 75% 
+## 6.2
+\end{verbatim}
+
+Interquartile range for distance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{quantile}\NormalTok{(alti,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.75}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{) }\OperatorTok{-}\StringTok{ }\KeywordTok{quantile}\NormalTok{(alti,}\DataTypeTok{probs=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{),}\DataTypeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 75% 
+## 398
+\end{verbatim}
+
+Absolute median deviation
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For each observation do abs(x-mean). Output in vector t.
+\item
+  Sum all values in t.
+\item
+  Divide by len(t)
+\end{enumerate}
+
+Distance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dist<-}\KeywordTok{c}\NormalTok{(}\FloatTok{12.5}\NormalTok{,}\FloatTok{29.9}\NormalTok{,}\FloatTok{14.8}\NormalTok{,}\FloatTok{18.7}\NormalTok{,}\FloatTok{7.6}\NormalTok{,}\FloatTok{16.2}\NormalTok{,}\FloatTok{16.5}\NormalTok{,}\FloatTok{27.4}\NormalTok{,}\FloatTok{12.1}\NormalTok{,}\FloatTok{17.5}\NormalTok{)}
+\NormalTok{m<-}\KeywordTok{median}\NormalTok{(dist)}
+\NormalTok{dist =}\StringTok{ }\NormalTok{dist }\OperatorTok{-}\StringTok{ }\NormalTok{m}
+\NormalTok{dist =}\StringTok{ }\KeywordTok{abs}\NormalTok{(dist)}
+\KeywordTok{sum}\NormalTok{(dist)}\OperatorTok{/}\KeywordTok{length}\NormalTok{(dist)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.68
+\end{verbatim}
+
+\end{document}

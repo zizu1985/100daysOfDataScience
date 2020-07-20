@@ -1,0 +1,113 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+#############
+Exercise 3-1
+#############
+
+We have 2 continous variable from hicker smarthphone.
+dist -> Distance (in km)
+alti -> Altitude (in m)
+
+a) Calculate the arithmetic mean and median for both distance and altitude
+
+Mean, Median for Distance
+
+```{r}
+dist<-c(12.5,29.9,14.8,18.7,7.6,16.2,16.5,27.4,12.1,17.5)
+mean(dist)
+median(dist)
+```
+
+Mean, Median for Altitude 
+
+```{r}
+alti<-c(342,1245,502,555,398,670,796,912,238,466)
+mean(alti)
+median(alti)
+```
+
+b) Determine the first and third quartiles for both distance and the altitude variables
+Discuss the shape of the distribution give the result of (a) and (b)
+
+Quartiles for distance
+
+```{r}
+quantile(dist,probs=c(0.25,0.75),type=2)
+```
+To achieve correct quantile type 2 algorithm was used (default is 7).
+
+
+Quartiles for distance
+
+```{r}
+quantile(alti,probs=c(0.25,0.75),type=2)
+```
+
+What does it means? 
+Distance. Mean is higher than median and mean in higher range of 25% and 75% quantile. It means 
+there were some trip(s) with longer length than others.
+
+Altitude. Mean is in the middle of 25% and 75% range. Mean is much higher than average, so we have some trips with mich higher 
+altitude move then others.
+
+
+Interquartile range for distance
+```{r}
+  quantile(dist,probs=c(0.75),type=2) - quantile(dist,probs=c(0.25),type=2)
+```
+Interquartile range for distance
+```{r}
+  quantile(alti,probs=c(0.75),type=2) - quantile(alti,probs=c(0.25),type=2)
+```
+
+
+Absolute median deviation
+
+1. For each observation do abs(x-mean). Output in vector t.
+2. Sum all values in t.
+3. Divide by len(t)
+
+Distance.
+```{r}
+dist<-c(12.5,29.9,14.8,18.7,7.6,16.2,16.5,27.4,12.1,17.5)
+m<-median(dist)
+dist = dist - m
+dist = abs(dist)
+sum(dist)/length(dist)
+```
+e) Boxplots
+
+Boxplot for distance 
+```{r}
+boxplot(dist,range=1.5)
+```
+
+Boxplot for altitude
+```{r}
+boxplot(alti,range=1.5)
+```
+
+f) Parameters for grouped data. Calculate the weighted arithmetic data, weighted median
+
+Weight arithmetic mean 
+```{r}
+weighted.mean(c(10,17.5,25),c(0.4,0.4,0.2))
+```
+
+Weight median (values are equally distributed)
+Sum all relative frequencies and stop when > 0.5
+median = 15 + ((0.5) - 0.4 /0.4) * 5 = 15 + (0.1/0.4) * 5 = 15 + 0.25 * 5 = 15 + 1.25 = 16.25 
+
+Is there any way in R to support this automatically ?
+
+
+
+
+
